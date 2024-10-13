@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    --color1:#f5f5f5;
+    --color2:#313131;
+    --color3:#828E42;
+    font-family: 'Poppins', 'Comfortaa', sans-serif;
+    background-color: var(--color1);
+}
+
+nav {
+    padding: 14px 0 14px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color1);
+    z-index: 100;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0px 0px 20px 0px var(--color3);
+
+}
+
+.container {
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+}
+
+.nav__elements {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__logo path {
+    fill: var(--color3);
+    transition: fill 0.5s ease;
+    
+}
+
+.nav__logo {
+    z-index: 5;
+}
+
+.nav__links {
+    gap: 40px;
+    display: flex;
+    
+}
+
+/* Estilos para los enlaces en la navegación */
+.nav__links a {
+    font-family: 'Comfortaa', sans-serif; /* Define la fuente del texto */
+    font-size: 14px; /* Establece el tamaño de la fuente a 14 píxeles */
+    font-weight: 600; /* Define el grosor de la fuente (600 es semi-negrita) */
+    line-height: 15.61px; /* Establece la altura de línea */
+    text-align: left; /* Alinea el texto a la izquierda */
+    color: var(--color2); /* Define el color del texto */
+    text-decoration: none; /* Elimina el subrayado predeterminado de los enlaces */
+    position: relative; /* Permite posicionar elementos hijos de forma absoluta en relación con este elemento */
+}
+
+/* Crea la bolita verde usando un pseudo-elemento */
+.nav__links a::after {
+    content: ''; /* Crea un elemento vacío */
+    position: absolute; /* Posiciona el elemento de forma absoluta respecto al enlace */
+    bottom: -10px; /* Coloca la bolita 10px debajo del enlace */
+    left: 50%; /* Mueve la bolita al 50% del ancho del enlace */
+    transform: translateX(-50%); /* Centra la bolita horizontalmente */
+    width: 6px; /* Define el ancho de la bolita */
+    height: 6px; /* Define la altura de la bolita */
+    background-color: var(--color3); /* Establece el color verde de la bolita */
+    border-radius: 50%; /* Crea una forma circular */
+    opacity: 0; /* Hace la bolita invisible inicialmente */
+    transition: opacity 0.5s ease; /* Añade una transición suave para la opacidad */
+}
+
+/* Muestra la bolita cuando el cursor está sobre el enlace */
+.nav__links a:hover::after {
+    opacity: 1; /* Hace visible la bolita cuando se pasa el cursor por encima del enlace */
+}
+
+/* Estilos generales para los botones en la barra de navegación */
+.nav__buttons {
+    display: flex; /* Organiza los botones en línea */
+    gap: 20px; /* Espacio entre los botones */
+    align-items: center; /* Alinea verticalmente los botones */
+}
+
+.nav__buttons button {
+    border: none; /* Elimina el borde del botón */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar por encima */
+    padding: 0px; /* Sin relleno adicional */
+    background-color: transparent;
+}
+
+/* Estilos para los iconos de los dos primeros botones */
+.nav__buttons button:nth-child(-n+2) i {
+    font-size: 20px; /* Tamaño del icono para los dos primeros botones */
+    color: var(--color2); /* Color inicial del icono */
+    transition: color 0.5s ease; /* Transición suave para el cambio de color */
+}
+
+/* Estilos para el icono del último botón */
+.nav__buttons button:last-child i {
+    font-size: 40px; /* Tamaño del icono para el último botón */
+    color: var(--color2); /* Color inicial del icono */
+    transition: color 0.5s ease; /* Transición suave para el cambio de color */
+}
+
+/* Efecto al pasar el cursor por encima para todos los botones */
+.nav__buttons button:hover i {
+    color: var(--color3); /* Cambia el color del icono a verde al pasar el cursor */
+}
+
+
+/* Efecto al hacer clic */
+.nav__buttons button:active {
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo más oscuro al hacer clic */
+}
+
+/* Estilos para el botón de hamburguesa */
+.hamburger {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 20px;
+    display: none;
+}
+
+.hamburger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color2);
+    transition: all 0.5s ease;
+    transition-timing-function: cubic-bezier( 0.68, -0.55, 0.265, 1.55 );
+}
+
+/* Posicionamiento de cada span */
+.hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger span:nth-child(3) {
+    bottom: 0;
+}
+
+/* Efecto hover para el botón de hamburguesa */
+.hamburger:hover span {
+    background-color: var(--color3);
+}
+
+/* Estilos para la hamburguesa cuando está activa (X) */
+.hamburger.active span {
+    background-color: var(--color1);
+    
+}
+
+.hamburger.active span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform:translateY(-50%) translateX(-100%);
+}
+
+.hamburger.active span:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+}
+
+/* Media query para ocultar la hamburguesa en pantallas grandes */
+@media (max-width: 992px) {
+    .hamburger {
+        display: block;
+    }
+    .nav__links {
+        position: fixed;
+        top: 0;
+        left: 100%;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color3);
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        transition: all 0.5s ease;
+        padding-top: 10vh;
+    }
+    .nav__links a{
+        color: var(--color1);
+    }
+    .nav__buttons{
+        position: fixed;
+        bottom: 10vh;
+        left: 100%;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        transition: all 0.5s ease;
+    }
+    .nav__links.show{
+        left: 0;
+    }
+    .nav__buttons.show{
+        left: 0;
+    }
+}
+
+.hamburger.active span{
+    background-color: var(--color1);
+}
+.nav__logo.active path{
+    fill: var(--color1);
+}
